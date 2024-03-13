@@ -6,6 +6,8 @@ public class PalletMovement : MonoBehaviour
 {
         public float moveSpeed = 5f;
         [SerializeField] private bool isplayer2;
+        [SerializeField] private bool canMoveUp;
+        [SerializeField] private bool canMoveDown;
 
         // Update is called once per frame
         void Update()
@@ -32,12 +34,12 @@ public class PalletMovement : MonoBehaviour
                 moveX = moveSpeed;
             }
             // Move up
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) && canMoveUp == true)
             {
                 moveY = moveSpeed;
             }
             // Move down
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) && canMoveDown == true)
             {
                 moveY = -moveSpeed;
             }
@@ -55,12 +57,12 @@ public class PalletMovement : MonoBehaviour
                 moveX = moveSpeed;
             }
             // Move up
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) && canMoveUp == true)
             {
                 moveY = moveSpeed;
             }
             // Move down
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) && canMoveDown == true)
             {
                 moveY = -moveSpeed;
             }
@@ -68,4 +70,23 @@ public class PalletMovement : MonoBehaviour
         Vector3 movement = new Vector3(moveX, moveY, 0f) * Time.deltaTime;
             transform.position += movement;
         }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "TopBound")
+        {
+            canMoveUp = false;
+        }
+
+        if (collision.tag == "BottomBound")
+        {
+            canMoveDown = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        canMoveUp = true;
+        canMoveDown = true;
+    }
 }
