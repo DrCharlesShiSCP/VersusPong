@@ -15,6 +15,7 @@ public class CollisionDetection : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         gameover1.SetActive(false);
         gameover2.SetActive(false);
         UpdateHealth1Display();
@@ -48,12 +49,14 @@ public class CollisionDetection : MonoBehaviour
 
     void Kill1()
     {
+        Time.timeScale = 0f;
         gameover1.SetActive(true);
         Debug.Log("Player1 has been killed!");
     }
 
     void Kill2()
     {
+        Time.timeScale = 0f;
         gameover2.SetActive(true);
         Debug.Log("Player2 has been killed!");
     }
