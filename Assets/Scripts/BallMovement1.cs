@@ -17,6 +17,7 @@ public class BallMovement1 : MonoBehaviour
     {
         // Add initial force to the ball
         AddInitialForce();
+        initialSpeed = 600f;
     }
 
     void Update()
@@ -28,8 +29,7 @@ public class BallMovement1 : MonoBehaviour
             rb.velocity = rb.velocity.normalized * initialSpeed;
         }
     }
-
-    void AddInitialForce()
+        void AddInitialForce()
     {
         // Wait for 1 second before starting the game
         Invoke("LaunchBall", 1f);
@@ -48,7 +48,12 @@ public class BallMovement1 : MonoBehaviour
         // Add a little randomness to the bounce
         Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
         rb.velocity += tweak;
+        Speedup();
 
         // Here you can add code to handle collision with bricks, like destroying the brick
+    }
+    void Speedup()
+    {
+        initialSpeed = initialSpeed + 50;
     }
 }
