@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class PalletMovement : MonoBehaviour
 {
-        public float moveSpeed = 5 * Time.deltaTime;
-        [SerializeField] private bool isplayer2;
-        [SerializeField] private bool canMoveUp;
-        [SerializeField] private bool canMoveDown;
+    public float moveSpeed = 5f;
+    public bool isplayer2;
+    public bool canMoveUp;
+    public bool canMoveDown;
 
-        // Update is called once per frame
-        void Update()
-        {
-            MovePlayer();
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        MovePlayer();
+    }
 
-        void MovePlayer()
-        {
-            float moveX = 0f;
-            float moveY = 0f;
+    void MovePlayer()
+    {
+        float moveX = 0f;
+        float moveY = 0f;
 
         // Move left
         if (isplayer2 != true)
         {
-            // Move left
+            /*// Move left
             if (Input.GetKey(KeyCode.A))
             {
                 moveX = -moveSpeed;
@@ -32,7 +32,7 @@ public class PalletMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 moveX = moveSpeed;
-            }
+            }*/
             // Move up
             if (Input.GetKey(KeyCode.W) && canMoveUp == true)
             {
@@ -46,7 +46,7 @@ public class PalletMovement : MonoBehaviour
         }
         if (isplayer2 == true)
         {
-            // Move left
+            /*// Move left
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 moveX = -moveSpeed;
@@ -55,7 +55,7 @@ public class PalletMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 moveX = moveSpeed;
-            }
+            }*/
             // Move up
             if (Input.GetKey(KeyCode.UpArrow) && canMoveUp == true)
             {
@@ -68,8 +68,8 @@ public class PalletMovement : MonoBehaviour
             }
         }
         Vector3 movement = new Vector3(moveX, moveY, 0f) * Time.deltaTime;
-            transform.position += movement;
-        }
+        transform.position += movement;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
