@@ -8,6 +8,8 @@ TagManager:
   - TopBound
   - Bottom Bound
   - BottomBound
+  - playerwall1
+  - playerwall2
   layers:
   - Default
   - TransparentFX

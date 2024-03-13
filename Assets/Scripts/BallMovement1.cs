@@ -7,6 +7,7 @@ public class BallMovement1 : MonoBehaviour
     public float initialSpeed = 6.0f; // Set a fixed initial speed
     private Rigidbody2D rb;
     private bool gameStarted = false;
+    public float upSpeed;
 
     void Awake()
     {
@@ -71,6 +72,6 @@ public class BallMovement1 : MonoBehaviour
     void Speedup()
     {
         // Directly increase the speed without relying on Time.deltaTime since this method is not called every frame
-        initialSpeed += 0.1f; // Adjust the value to control speed increment rate
+        initialSpeed += upSpeed; // Adjust the value to control speed increment rate
     }
 }
