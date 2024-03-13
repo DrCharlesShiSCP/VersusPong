@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallMovement1 : MonoBehaviour
 {
-    public float initialSpeed;
+    public float initialSpeed = 6.0f; // Set a fixed initial speed
     private Rigidbody2D rb;
     private bool gameStarted = false;
 
@@ -15,9 +15,8 @@ public class BallMovement1 : MonoBehaviour
 
     void Start()
     {
-        // Add initial force to the ball
-        AddInitialForce();
-        initialSpeed = 75 * Time.deltaTime;
+        // Add initial force to the ball after a delay
+        Invoke("LaunchBall", 1f);
     }
 
     void Update()
@@ -29,17 +28,13 @@ public class BallMovement1 : MonoBehaviour
             rb.velocity = rb.velocity.normalized * initialSpeed;
         }
     }
-        void AddInitialForce()
-    {
-        // Wait for 1 second before starting the game
-        Invoke("LaunchBall", 1f);
-    }
 
     void LaunchBall()
     {
         float x = Random.Range(0, 2) == 0 ? -1 : 1; // Left or right
         float y = Random.Range(0.5f, 1f); // Randomize the initial y direction
-        rb.AddForce(new Vector2(x, y).normalized * initialSpeed);
+        Vector2 direction = new Vector2(x, y).normalized;
+        rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
         gameStarted = true;
     }
 
@@ -48,12 +43,16 @@ public class BallMovement1 : MonoBehaviour
         // Add a little randomness to the bounce
         Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
         rb.velocity += tweak;
+
+        // Speed up the ball every time it hits something
         Speedup();
 
         // Here you can add code to handle collision with bricks, like destroying the brick
     }
+
     void Speedup()
     {
-        initialSpeed = initialSpeed + 1 * Time.deltaTime;
+        // Directly increase the speed without relying on Time.deltaTime since this method is not called every frame
+        initialSpeed += 0.1f; // Adjust the value to control speed increment rate
     }
 }
