@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Events : MonoBehaviour
 {
+    public string nextScene;
     public void Reset()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(nextScene);
     }
 
 }

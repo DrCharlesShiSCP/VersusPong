@@ -20,15 +20,15 @@ public class BlockScript : MonoBehaviour
     {
         if (blockhealth >= 3)
         {
-            //thisblock.sprite = Block3;
+            thisblock.sprite = Block3;
         }
         else if (blockhealth < 3 && blockhealth >= 2)
         {
-            //thisblock.sprite = Block2;
+            thisblock.sprite = Block2;
         }
         else if (blockhealth < 2 && blockhealth >= 1)
         {
-            //thisblock.sprite = Block1;
+            thisblock.sprite = Block1;
         }
         else if (blockhealth < 1 && blockhealth >= 0)
         {

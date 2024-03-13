@@ -5,8 +5,8 @@ using TMPro;
 
 public class CollisionDetection : MonoBehaviour
 {
-    private int player1life = 3; 
-    private int player2life = 3; 
+    private int player1life = 2; 
+    private int player2life = 2; 
     public TextMeshProUGUI player1health;
     public TextMeshProUGUI player2health;
     public GameObject gameover1;
@@ -75,6 +75,7 @@ public class CollisionDetection : MonoBehaviour
         // Check if the ball GameObject reference is set
         if (ballGameObject != null)
         {
+            ballGameObject.GetComponent<TrailRenderer>().enabled = false;
             BallMovement1 ballMovementScript = ballGameObject.GetComponent<BallMovement1>();
             if (ballMovementScript != null)
             {
@@ -84,5 +85,6 @@ public class CollisionDetection : MonoBehaviour
             }
         }
         ballGameObject.transform.position = Vector2.zero;
+        ballGameObject.GetComponent<TrailRenderer>().enabled = true;
     }
 }
