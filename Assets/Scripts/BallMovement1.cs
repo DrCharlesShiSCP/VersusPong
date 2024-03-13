@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallMovement1 : MonoBehaviour
 {
-    public float initialSpeed = 6 * Time.deltaTime;
+    public float initialSpeed;
     private Rigidbody2D rb;
     private bool gameStarted = false;
 
@@ -17,7 +17,7 @@ public class BallMovement1 : MonoBehaviour
     {
         // Add initial force to the ball
         AddInitialForce();
-        initialSpeed = 6 * Time.deltaTime;
+        initialSpeed = 75 * Time.deltaTime;
     }
 
     void Update()

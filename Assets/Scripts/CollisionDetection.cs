@@ -12,8 +12,8 @@ public class CollisionDetection : MonoBehaviour
 
     private void Start()
     {
-        player1life = 3;   
-        player2life = 3;
+        player1life = 1;   
+        player2life = 1;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
