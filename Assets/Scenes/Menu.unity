@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 141971548}
   - component: {fileID: 141971547}
   m_Layer: 0
-  m_Name: Top Boundry (1)
+  m_Name: Top Boundry Detector
   m_TagString: TopBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 179141831}
   - component: {fileID: 179141832}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Player 2 Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 238293857}
   - component: {fileID: 238293856}
   m_Layer: 0
-  m_Name: Bottom Boundry (2)
+  m_Name: Block Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 268500584}
   - component: {fileID: 268500583}
   m_Layer: 0
-  m_Name: Bottom Boundry (1)
+  m_Name: Bottom Boundery Detector
   m_TagString: BottomBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1298,7 +1298,7 @@ GameObject:
   - component: {fileID: 324236116}
   - component: {fileID: 324236115}
   m_Layer: 0
-  m_Name: Bottom Boundry (3)
+  m_Name: Block Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 855408843}
   - component: {fileID: 855408842}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Player 1 Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2132,7 +2132,7 @@ GameObject:
   - component: {fileID: 2005504364}
   - component: {fileID: 2005504363}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2353,16 +2353,16 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1974937186}
+  - {fileID: 296557734}
+  - {fileID: 2014646519}
   - {fileID: 179141830}
   - {fileID: 855408846}
+  - {fileID: 2005504362}
   - {fileID: 550840075}
   - {fileID: 141971550}
   - {fileID: 89809896}
+  - {fileID: 268500586}
   - {fileID: 238293860}
   - {fileID: 324236119}
-  - {fileID: 268500586}
-  - {fileID: 296557734}
-  - {fileID: 2014646519}
-  - {fileID: 2005504362}
   - {fileID: 98477448}
   - {fileID: 1742703638}
