@@ -2063,7 +2063,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &296557734
 RectTransform:
@@ -6532,7 +6532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 5
-  upSpeed: 1
+  upSpeed: 0.2
 --- !u!212 &2005504361
 SpriteRenderer:
   m_ObjectHideFlags: 0
