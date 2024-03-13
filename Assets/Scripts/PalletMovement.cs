@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallMovement : MonoBehaviour
+public class PalletMovement : MonoBehaviour
 {
         public float moveSpeed = 5f;
 
