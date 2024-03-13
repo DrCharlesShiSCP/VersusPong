@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PalletMovement : MonoBehaviour
 {
-        public float moveSpeed = 5f;
+        public float moveSpeed = 5 * Time.deltaTime;
         [SerializeField] private bool isplayer2;
         [SerializeField] private bool canMoveUp;
         [SerializeField] private bool canMoveDown;
