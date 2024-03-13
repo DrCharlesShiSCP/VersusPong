@@ -40,14 +40,32 @@ public class BallMovement1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Add a little randomness to the bounce
-        Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
-        rb.velocity += tweak;
+            if (collision.gameObject.tag == "Paddle") // Make sure your paddle GameObject is tagged "Paddle"
+            {
+                // Calculate difference in positions
+                float positionDifference = transform.position.x - collision.transform.position.x;
 
-        // Speed up the ball every time it hits something
-        Speedup();
+                // Normalize the difference in position
+                float normalizedDifference = positionDifference / (collision.collider.bounds.size.x / 2);
 
-        // Here you can add code to handle collision with bricks, like destroying the brick
+                // Calculate new vector
+                float angle = normalizedDifference * 45.0f; // Adjust the angle as needed
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+                // Apply the new direction with the same speed
+                rb.velocity = direction * rb.velocity.magnitude;
+            }
+            else
+            {
+                // Add a little randomness to the bounce off other surfaces
+                Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
+                rb.velocity += tweak;
+            }
+
+            // Optionally, speed up the ball
+            Speedup();
+
     }
 
     void Speedup()
