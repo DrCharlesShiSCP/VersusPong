@@ -8,6 +8,7 @@ public class BallMovement1 : MonoBehaviour
     private Rigidbody2D rb;
     private bool gameStarted = false;
     public float upSpeed;
+    public float maxSpeed = 10.0f;
 
     void Awake()
     {
@@ -71,7 +72,10 @@ public class BallMovement1 : MonoBehaviour
 
     void Speedup()
     {
-        // Directly increase the speed without relying on Time.deltaTime since this method is not called every frame
-        initialSpeed += upSpeed; // Adjust the value to control speed increment rate
+        if (initialSpeed < maxSpeed)
+        {
+            initialSpeed += upSpeed; // Increase speed by a fixed amount. Adjust this value as needed.
+            initialSpeed = Mathf.Min(initialSpeed, maxSpeed); // Ensures speed does not exceed maxSpeed
+        }
     }
 }
