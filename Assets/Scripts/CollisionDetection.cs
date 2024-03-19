@@ -11,7 +11,10 @@ public class CollisionDetection : MonoBehaviour
     public TextMeshProUGUI player2health;
     public GameObject gameover1;
     public GameObject gameover2;
-    public GameObject ballGameObject; 
+    public GameObject ballGameObject;
+
+    public GameObject GameAudio;
+    public GameObject EndAudio;
 
     private void Start()
     {
@@ -52,6 +55,8 @@ public class CollisionDetection : MonoBehaviour
         Time.timeScale = 0f;
         gameover1.SetActive(true);
         Debug.Log("Player1 has been killed!");
+        GameAudio.SetActive(false);
+        EndAudio.SetActive(true);
     }
 
     void Kill2()
@@ -59,6 +64,8 @@ public class CollisionDetection : MonoBehaviour
         Time.timeScale = 0f;
         gameover2.SetActive(true);
         Debug.Log("Player2 has been killed!");
+        GameAudio.SetActive(false);
+        EndAudio.SetActive(true);
     }
 
     void UpdateHealth1Display()
