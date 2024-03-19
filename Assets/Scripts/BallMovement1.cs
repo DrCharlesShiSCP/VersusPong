@@ -19,6 +19,11 @@ public class BallMovement1 : MonoBehaviour
     {
         // Add initial force to the ball after a delay
         Invoke("LaunchBall", 1f);
+        StartSpeedupRoutine();
+    }
+    void StartSpeedupRoutine()
+    {
+        StartCoroutine(CallSpeedupEvery5Seconds());
     }
 
     void Update()
@@ -69,7 +74,14 @@ public class BallMovement1 : MonoBehaviour
             Speedup();
 
     }
-
+    IEnumerator CallSpeedupEvery5Seconds()
+    {
+        while (initialSpeed < maxSpeed)
+        {
+            Speedup();
+            yield return new WaitForSeconds(5f); // Wait for 5 seconds before calling Speedup again
+        }
+    }
     void Speedup()
     {
         if (initialSpeed < maxSpeed)
