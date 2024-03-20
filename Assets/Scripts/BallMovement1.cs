@@ -51,15 +51,15 @@ public class BallMovement1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-            if (collision.gameObject.tag == "Paddle") // Make sure your paddle GameObject is tagged "Paddle"
+            PalletMovement paddleHit = collision.gameObject.GetComponent<PalletMovement>();
+            if (paddleHit != null)
             {
-                lastPaddleHit = collision.gameObject;
             // Calculate difference in positions
                 float positionDifference = transform.position.x - collision.transform.position.x;
 
                 // Normalize the difference in position
                 float normalizedDifference = positionDifference / (collision.collider.bounds.size.x / 2);
-
+                lastPaddleHit = paddleHit;
                 // Calculate new vector
                 float angle = normalizedDifference * 45.0f; // Adjust the angle as needed
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();

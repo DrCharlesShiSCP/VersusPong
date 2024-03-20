@@ -10,9 +10,6 @@ public class PowerUpManager : MonoBehaviour
     private float originalBallSpeed;
     private bool isBallSpeedReduced = false;
    
-    private float originalPaddleSpeed;
-    private bool isPaddleSpeedIncreased = false;
-   
     [SerializeField] private GameObject ballPrefab; // Reference to your Ball prefab
     private List<GameObject> extraBalls = new List<GameObject>();
 
@@ -119,7 +116,7 @@ public class PowerUpManager : MonoBehaviour
     private IEnumerator PaddleSpeedUpRoutine(PalletMovement paddleScript)
     {
         float originalSpeed = paddleScript.moveSpeed;
-        paddleScript.moveSpeed *= 1.5f; // Example: increase speed by 50%
+        paddleScript.moveSpeed *= 1.5f; //increase speed by 50%
         yield return new WaitForSeconds(10); // Wait for 10 seconds
         paddleScript.moveSpeed = originalSpeed; // Reset to original speed
     }
