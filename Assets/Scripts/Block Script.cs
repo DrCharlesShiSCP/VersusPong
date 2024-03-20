@@ -5,10 +5,13 @@ using UnityEngine;
 public class BlockScript : MonoBehaviour
 {
     public int blockhealth;
+    public Collider2D mycollider;
     public Sprite Block3;
     public Sprite Block2;
     public Sprite Block1;
     public SpriteRenderer thisblock;
+    public bool isdead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,22 +24,42 @@ public class BlockScript : MonoBehaviour
         if (blockhealth >= 3)
         {
             thisblock.sprite = Block3;
+            thisblock.enabled = true;
+            mycollider.enabled = true;
         }
         else if (blockhealth < 3 && blockhealth >= 2)
         {
             thisblock.sprite = Block2;
+            thisblock.enabled = true;
+            mycollider.enabled = true;
         }
         else if (blockhealth < 2 && blockhealth >= 1)
         {
             thisblock.sprite = Block1;
+            thisblock.enabled = true;
+            mycollider.enabled = true;
         }
         else if (blockhealth < 1 && blockhealth >= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            thisblock.enabled = false;
+            mycollider.enabled = false;
+            if (isdead == false)
+            {
+                onDeath();
+                isdead = true;
+            }
+
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void onDeath()
+    { 
+    
+    
+    }
+
+        void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the other GameObject has a script component named "YourScriptName"
         BallMovement1 script = collision.gameObject.GetComponent<BallMovement1>();
