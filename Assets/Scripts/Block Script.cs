@@ -12,10 +12,11 @@ public class BlockScript : MonoBehaviour
     public SpriteRenderer thisblock;
     public bool isdead;
 
+    private ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -55,14 +56,34 @@ public class BlockScript : MonoBehaviour
 
     public void onDeath()
     {
-       /* PowerUpManager powerUpManager = FindObjectOfType<PowerUpManager>();
+        // Find the BallMovement1 script in the scene
+        BallMovement1 ballMovement = FindObjectOfType<BallMovement1>();
+        if (ballMovement != null && ballMovement.lastPaddleHit != null)
+        {
+            // Determine which player's paddle was the last to hit the ball
+            bool isPlayerTwo = ballMovement.lastPaddleHit.isplayer2;
+
+            // Find the ScoreManager script in the scene
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            if (scoreManager != null)
+            {
+                // Add 5 points to the appropriate player's score
+                scoreManager.AddScore(isPlayerTwo, 5);
+            }
+        }
+        // Optionally activate a power-up
+        /*PowerUpManager powerUpManager = FindObjectOfType<PowerUpManager>();
         if (powerUpManager != null)
         {
             powerUpManager.ActivateRandomPowerUp();
         }*/
+
+        // Disable the block or handle its destruction
+        isdead = true;
+        // gameObject.SetActive(false); // You could also deactivate the brick GameObject
     }
 
-        void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the other GameObject has a script component named "YourScriptName"
         BallMovement1 script = collision.gameObject.GetComponent<BallMovement1>();

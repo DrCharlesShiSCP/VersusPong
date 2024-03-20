@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 16170979}
   - component: {fileID: 16170978}
   m_Layer: 5
-  m_Name: Player2Health
+  m_Name: p2Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4749,7 +4749,7 @@ GameObject:
   - component: {fileID: 1827825241}
   - component: {fileID: 1827825240}
   m_Layer: 5
-  m_Name: Player1Health
+  m_Name: p1Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

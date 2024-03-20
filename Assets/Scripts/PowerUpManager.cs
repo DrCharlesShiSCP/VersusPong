@@ -9,6 +9,7 @@ public class PowerUpManager : MonoBehaviour
     public BallMovement1 ballMovementScript;
     private float originalBallSpeed;
     private bool isBallSpeedReduced = false;
+
    
     [SerializeField] private GameObject ballPrefab; // Reference to your Ball prefab
     private List<GameObject> extraBalls = new List<GameObject>();

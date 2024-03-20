@@ -16,6 +16,8 @@ public class CollisionDetection : MonoBehaviour
     public GameObject GameAudio;
     public GameObject EndAudio;
 
+    public PalletMovement lastPaddleHit;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -91,6 +93,7 @@ public class CollisionDetection : MonoBehaviour
                 ballMovementScript.initialSpeed = 6.0f; 
             }
         }
+        lastPaddleHit = null;
         ballGameObject.transform.position = Vector2.zero;
         ballGameObject.GetComponent<TrailRenderer>().enabled = true;
     }
