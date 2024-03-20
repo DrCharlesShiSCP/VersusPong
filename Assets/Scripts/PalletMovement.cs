@@ -8,6 +8,7 @@ public class PalletMovement : MonoBehaviour
     public bool isplayer2;
     public bool canMoveUp;
     public bool canMoveDown;
+    public BallMovement1 ball;
 
     // Update is called once per frame
     void Update()
@@ -88,5 +89,18 @@ public class PalletMovement : MonoBehaviour
     {
         canMoveUp = true;
         canMoveDown = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isplayer2 != true)
+        {
+            ball.hitP1Last = true;
+        }
+        if (isplayer2 == true)
+        {
+            ball.hitP1Last = false;
+        }
+
     }
 }

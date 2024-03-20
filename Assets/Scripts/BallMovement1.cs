@@ -11,6 +11,7 @@ public class BallMovement1 : MonoBehaviour
     public float maxSpeed = 10.0f;
     public CollosionEffects Particles;
     public GameObject ParticleSystem;
+    public bool hitP1Last;
     
     public PalletMovement lastPaddleHit;
 
