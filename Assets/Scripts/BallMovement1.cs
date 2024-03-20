@@ -11,6 +11,8 @@ public class BallMovement1 : MonoBehaviour
     public float maxSpeed = 10.0f;
     public CollosionEffects Particles;
     public GameObject ParticleSystem;
+    
+    public PalletMovement lastPaddleHit;
 
     void Awake()
     {
@@ -51,7 +53,8 @@ public class BallMovement1 : MonoBehaviour
     {
             if (collision.gameObject.tag == "Paddle") // Make sure your paddle GameObject is tagged "Paddle"
             {
-                // Calculate difference in positions
+                lastPaddleHit = collision.gameObject;
+            // Calculate difference in positions
                 float positionDifference = transform.position.x - collision.transform.position.x;
 
                 // Normalize the difference in position

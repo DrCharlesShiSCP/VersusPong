@@ -6,12 +6,13 @@ using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class PowerUpManager : MonoBehaviour
 {
-    [SerializeField] private BallMovement1 ball; // Reference to your Ball script
+    public BallMovement1 ballMovementScript;
     private float originalBallSpeed;
     private bool isBallSpeedReduced = false;
-    [SerializeField] private PalletMovement paddle; // Reference to your Paddle script
+   
     private float originalPaddleSpeed;
     private bool isPaddleSpeedIncreased = false;
+   
     [SerializeField] private GameObject ballPrefab; // Reference to your Ball prefab
     private List<GameObject> extraBalls = new List<GameObject>();
 
@@ -93,8 +94,8 @@ public class PowerUpManager : MonoBehaviour
     {
         if (!isBallSpeedReduced)
         {
-            originalBallSpeed = ball.initialSpeed; //ball script has a 'speed' variable
-            ball.initialSpeed *= 0.5f; // Halve the ball's speed
+            originalBallSpeed = ballMovementScript.initialSpeed; //ball script has a 'speed' variable
+            ballMovementScript.initialSpeed *= 0.5f; // Halve the ball's speed
             isBallSpeedReduced = true;
             StartCoroutine(ResetBallSpeedAfterDelay(10f));
         }
@@ -103,32 +104,31 @@ public class PowerUpManager : MonoBehaviour
     private IEnumerator ResetBallSpeedAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        ball.initialSpeed = originalBallSpeed;
+        ballMovementScript.initialSpeed = originalBallSpeed;
         isBallSpeedReduced = false;
     }
     public void PalletSpeedUp()
     {
-        if (!isPaddleSpeedIncreased)
+        if (ballMovementScript.lastPaddleHit != null)
         {
-            originalPaddleSpeed = paddle.moveSpeed;
-            paddle.moveSpeed *= 1.5f; // Increase the paddle's speed by 50%
-            isPaddleSpeedIncreased = true;
-            StartCoroutine(ResetPaddleSpeedAfterDelay(10f));
+            // Apply the speed up power-up directly to the last paddle hit
+            StartCoroutine(PaddleSpeedUpRoutine(ballMovementScript.lastPaddleHit));
         }
     }
 
-    private IEnumerator ResetPaddleSpeedAfterDelay(float delay)
+    private IEnumerator PaddleSpeedUpRoutine(PalletMovement paddleScript)
     {
-        yield return new WaitForSeconds(delay);
-        paddle.moveSpeed = originalPaddleSpeed;
-        isPaddleSpeedIncreased = false;
+        float originalSpeed = paddleScript.moveSpeed;
+        paddleScript.moveSpeed *= 1.5f; // Example: increase speed by 50%
+        yield return new WaitForSeconds(10); // Wait for 10 seconds
+        paddleScript.moveSpeed = originalSpeed; // Reset to original speed
     }
 
     public void MultiBall()
     {
         for (int i = 0; i < 2; i++) // Create two additional balls
         {
-            GameObject newBall = Instantiate(ballPrefab, ball.transform.position, Quaternion.identity);
+            GameObject newBall = Instantiate(ballPrefab, ballMovementScript.transform.position, Quaternion.identity);
             // Assuming the ball prefab has a script attached that automatically sets its velocity
             extraBalls.Add(newBall);
         }
