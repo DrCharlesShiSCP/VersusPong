@@ -110,7 +110,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (!isPaddleSpeedIncreased)
         {
-            originalPaddleSpeed = paddle.moveSpeed; // Assuming your paddle script has a 'speed' variable
+            originalPaddleSpeed = paddle.moveSpeed;
             paddle.moveSpeed *= 1.5f; // Increase the paddle's speed by 50%
             isPaddleSpeedIncreased = true;
             StartCoroutine(ResetPaddleSpeedAfterDelay(10f));
