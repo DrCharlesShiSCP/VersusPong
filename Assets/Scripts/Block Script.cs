@@ -54,9 +54,12 @@ public class BlockScript : MonoBehaviour
     }
 
     public void onDeath()
-    { 
-    
-    
+    {
+       /* PowerUpManager powerUpManager = FindObjectOfType<PowerUpManager>();
+        if (powerUpManager != null)
+        {
+            powerUpManager.ActivateRandomPowerUp();
+        }*/
     }
 
         void OnCollisionEnter2D(Collision2D collision)
