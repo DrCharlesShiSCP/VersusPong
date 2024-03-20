@@ -10,7 +10,10 @@ public class PowerUpManager : MonoBehaviour
     private float originalBallSpeed;
     private bool isBallSpeedReduced = false;
 
-   
+    public string BlockTag1;
+    public string BlockTag2;
+
+
     [SerializeField] private GameObject ballPrefab; // Reference to your Ball prefab
     private List<GameObject> extraBalls = new List<GameObject>();
 
@@ -28,6 +31,8 @@ public class PowerUpManager : MonoBehaviour
     private void Start()
     {
         TransitionToState(State.Standard);
+        GameObject[] Player1Blocks = GameObject.FindGameObjectsWithTag(BlockTag1);
+        GameObject[] Player2Blocks = GameObject.FindGameObjectsWithTag(BlockTag2);
     }
 
     private void Update()
@@ -150,5 +155,50 @@ public class PowerUpManager : MonoBehaviour
     public void BlockHP()
     {
         
+        if (ballMovementScript.hitP1Last == true)
+        {
+            GameObject[] Player1Blocks = GameObject.FindGameObjectsWithTag(BlockTag1);
+            foreach (GameObject taggedObject in Player1Blocks)
+            {
+                // Get all components attached to the tagged object
+                Component[] block1 = taggedObject.GetComponents<BlockScript>();
+
+                foreach (Component component in block1)
+                {
+                    // Check if the component has any public integer fields
+                    foreach (var blockhealth in component.GetType().GetFields())
+                    {
+                        if (blockhealth.FieldType == typeof(int))
+                        {
+                            // Add 1 to the integer field
+                            blockhealth.SetValue(component, ((int)blockhealth.GetValue(component)) + 1);
+                        }
+                    }
+                }
+            }
+        }
+        if (ballMovementScript.hitP1Last == false)
+        {
+            GameObject[] Player2Blocks = GameObject.FindGameObjectsWithTag(BlockTag2);
+            foreach (GameObject taggedObject in Player2Blocks)
+            {
+                // Get all components attached to the tagged object
+                Component[] block1 = taggedObject.GetComponents<BlockScript>();
+
+                foreach (Component component in block1)
+                {
+                    // Check if the component has any public integer fields
+                    foreach (var blockhealth in component.GetType().GetFields())
+                    {
+                        if (blockhealth.FieldType == typeof(int))
+                        {
+                            // Add 1 to the integer field
+                            blockhealth.SetValue(component, ((int)blockhealth.GetValue(component)) + 1);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

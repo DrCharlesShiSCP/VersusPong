@@ -101,6 +101,5 @@ public class PalletMovement : MonoBehaviour
         {
             ball.hitP1Last = false;
         }
-
     }
 }
