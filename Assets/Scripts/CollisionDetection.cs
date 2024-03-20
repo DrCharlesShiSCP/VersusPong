@@ -5,8 +5,8 @@ using TMPro;
 
 public class CollisionDetection : MonoBehaviour
 {
-    private int player1life = 2; 
-    private int player2life = 2; 
+    //private int player1life = 2; 
+    //private int player2life = 2; 
     public TextMeshProUGUI player1health;
     public TextMeshProUGUI player2health;
     public GameObject gameover1;
@@ -23,13 +23,13 @@ public class CollisionDetection : MonoBehaviour
         Time.timeScale = 1f;
         gameover1.SetActive(false);
         gameover2.SetActive(false);
-        UpdateHealth1Display();
-        UpdateHealth2Display();
+        //UpdateHealth1Display();
+        //UpdateHealth2Display();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collided object is player backwall
+        /*// Check if the collided object is player backwall
         if (collision.gameObject.CompareTag("playerwall1"))
         {
             player1life -= 1;
@@ -79,22 +79,24 @@ public class CollisionDetection : MonoBehaviour
     {
         player2health.text = "Health: " + player2life;
     }
-    void resetBall()
-    {
-        // Check if the ball GameObject reference is set
-        if (ballGameObject != null)
+    */
+        void resetBall()
         {
-            ballGameObject.GetComponent<TrailRenderer>().enabled = false;
-            BallMovement1 ballMovementScript = ballGameObject.GetComponent<BallMovement1>();
-            if (ballMovementScript != null)
+            // Check if the ball GameObject reference is set
+            if (ballGameObject != null)
             {
-                // Modify the upSpeed and initialSpeed
-                ballMovementScript.upSpeed = 0.1f; 
-                ballMovementScript.initialSpeed = 6.0f; 
+                ballGameObject.GetComponent<TrailRenderer>().enabled = false;
+                BallMovement1 ballMovementScript = ballGameObject.GetComponent<BallMovement1>();
+                if (ballMovementScript != null)
+                {
+                    // Modify the upSpeed and initialSpeed
+                    ballMovementScript.upSpeed = 0.1f;
+                    ballMovementScript.initialSpeed = 6.0f;
+                }
             }
+            lastPaddleHit = null;
+            ballGameObject.transform.position = Vector2.zero;
+            ballGameObject.GetComponent<TrailRenderer>().enabled = true;
         }
-        lastPaddleHit = null;
-        ballGameObject.transform.position = Vector2.zero;
-        ballGameObject.GetComponent<TrailRenderer>().enabled = true;
     }
 }

@@ -69,6 +69,7 @@ public class BlockScript : MonoBehaviour
             {
                 // Add 5 points to the appropriate player's score
                 scoreManager.AddScore(isPlayerTwo, 5);
+                Debug.Log("added score");
             }
         }
         // Optionally activate a power-up
@@ -80,7 +81,7 @@ public class BlockScript : MonoBehaviour
 
         // Disable the block or handle its destruction
         isdead = true;
-        // gameObject.SetActive(false); // You could also deactivate the brick GameObject
+        gameObject.SetActive(false); // You could also deactivate the brick GameObject
     }
 
     void OnCollisionEnter2D(Collision2D collision)

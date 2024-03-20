@@ -23,4 +23,10 @@ public class ScoreManager : MonoBehaviour
             player1ScoreText.text = "Score: " + player1Score;
         }
     }
+    private void Start()
+    {
+        player2ScoreText.text = "Score: " + player2Score;
+        player1ScoreText.text = "Score: " + player1Score;
+
+    }
 }
