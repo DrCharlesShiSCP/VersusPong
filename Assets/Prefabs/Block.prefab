@@ -230,10 +230,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockhealth: 2
+  mycollider: {fileID: 8853127277160970070}
   Block3: {fileID: 21300000, guid: aef4e8afdb3f5814f802a4502302f5f7, type: 3}
   Block2: {fileID: 21300000, guid: 63ac74929cf12394d9bac8b1cba62f02, type: 3}
   Block1: {fileID: 21300000, guid: 0ef98a2259bbfcd478d3ed0032380b87, type: 3}
   thisblock: {fileID: 8343597508153708935}
+  isdead: 0
 --- !u!50 &7434362000246671853
 Rigidbody2D:
   serializedVersion: 4
