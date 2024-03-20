@@ -9,6 +9,8 @@ public class BallMovement1 : MonoBehaviour
     private bool gameStarted = false;
     public float upSpeed;
     public float maxSpeed = 10.0f;
+    public CollosionEffects Particles;
+    public GameObject ParticleSystem;
 
     void Awake()
     {
@@ -72,7 +74,8 @@ public class BallMovement1 : MonoBehaviour
 
             // Optionally, speed up the ball
             Speedup();
-
+            Particles.PlayCollisionEffect();
+            ParticleSystem.SetActive(true);
     }
     IEnumerator CallSpeedupEvery5Seconds()
     {
