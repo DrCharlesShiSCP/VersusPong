@@ -5023,6 +5023,7 @@ MonoBehaviour:
   maxSpeed: 10
   Particles: {fileID: 5004317537993187686}
   ParticleSystem: {fileID: 3514364388012615437}
+  hitP1Last: 0
   lastPaddleHit: {fileID: 0}
 --- !u!58 &5469733971354942056
 CircleCollider2D:
@@ -5105,6 +5106,7 @@ MonoBehaviour:
   ballGameObject: {fileID: 6605323015816124028}
   GameAudio: {fileID: 0}
   EndAudio: {fileID: 0}
+  lastPaddleHit: {fileID: 0}
 --- !u!96 &5518434193939680148
 TrailRenderer:
   serializedVersion: 3
