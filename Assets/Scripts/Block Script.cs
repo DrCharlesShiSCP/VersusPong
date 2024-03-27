@@ -10,6 +10,7 @@ public class BlockScript : MonoBehaviour
     public Sprite Block2;
     public Sprite Block1;
     public SpriteRenderer thisblock;
+    public ParticleSystem ParticleSystem;
     public bool isdead;
 
     private ScoreManager scoreManager;
@@ -50,7 +51,6 @@ public class BlockScript : MonoBehaviour
                 onDeath();
                 isdead = true;
             }
-
         }
     }
 
@@ -80,8 +80,9 @@ public class BlockScript : MonoBehaviour
         }*/
 
         // Disable the block or handle its destruction
+        ParticleSystem.Play();
         isdead = true;
-        gameObject.SetActive(false); // You could also deactivate the brick GameObject
+        //gameObject.SetActive(false); // You could also deactivate the brick GameObject
     }
 
     void OnCollisionEnter2D(Collision2D collision)

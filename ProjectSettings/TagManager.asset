@@ -10,6 +10,8 @@ TagManager:
   - BottomBound
   - playerwall1
   - playerwall2
+  - Block
+  - Ball
   layers:
   - Default
   - TransparentFX

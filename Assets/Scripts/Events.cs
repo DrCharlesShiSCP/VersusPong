@@ -7,14 +7,21 @@ public class Events : MonoBehaviour
 {
     public CircularTimer timer;
     public string nextScene;
+    public bool isMenu;
     public void Reset()
     {
-        timer.PauseTimer();
+        if (isMenu != true)
+        {
+            timer.PauseTimer();
+        }
         SceneManager.LoadScene(nextScene);
     }
     private void Start()
     {
-        timer.StartTimer();
+        if (isMenu != true)
+        {
+            timer.StartTimer();
+        }
     }
 
 }

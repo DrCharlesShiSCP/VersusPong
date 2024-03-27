@@ -27,59 +27,28 @@ public class CollisionDetection : MonoBehaviour
         //UpdateHealth2Display();
     }
 
+    public void Update()
+    {
+        
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*// Check if the collided object is player backwall
         if (collision.gameObject.CompareTag("playerwall1"))
         {
-            player1life -= 1;
-            UpdateHealth1Display();
-            if (player1life <= 0)
-            {
-                Kill1();
-            }
+            ScoreManager script = FindObjectOfType<ScoreManager>();
+            script.player2Score = script.player2Score + 15;
+            script.player2ScoreText.text = "Score: " + script.player2Score;
             resetBall();
         }
         else if (collision.gameObject.CompareTag("playerwall2"))
         {
-            player2life -= 1;
-            UpdateHealth2Display();
-            if (player2life <= 0)
-            {
-                Kill2();
-            }
+            ScoreManager script = FindObjectOfType<ScoreManager>();
+            script.player1Score = script.player1Score + 15;
+            script.player1ScoreText.text = "Score: " + script.player1Score;
             resetBall();
         }
     }
 
-    void Kill1()
-    {
-        Time.timeScale = 0f;
-        gameover1.SetActive(true);
-        Debug.Log("Player1 has been killed!");
-        GameAudio.SetActive(false);
-        EndAudio.SetActive(true);
-    }
-
-    void Kill2()
-    {
-        Time.timeScale = 0f;
-        gameover2.SetActive(true);
-        Debug.Log("Player2 has been killed!");
-        GameAudio.SetActive(false);
-        EndAudio.SetActive(true);
-    }
-
-    void UpdateHealth1Display()
-    {
-        player1health.text = "Health: " + player1life;
-    }
-
-    void UpdateHealth2Display()
-    {
-        player2health.text = "Health: " + player2life;
-    }
-    */
         void resetBall()
         {
             // Check if the ball GameObject reference is set
@@ -98,5 +67,4 @@ public class CollisionDetection : MonoBehaviour
             ballGameObject.transform.position = Vector2.zero;
             ballGameObject.GetComponent<TrailRenderer>().enabled = true;
         }
-    }
 }
