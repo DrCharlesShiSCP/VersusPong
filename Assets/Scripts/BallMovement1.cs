@@ -58,24 +58,24 @@ public class BallMovement1 : MonoBehaviour
             if (paddleHit != null)
             {
             // Calculate difference in positions
-                float positionDifference = transform.position.x - collision.transform.position.x;
+                //float positionDifference = transform.position.x - collision.transform.position.x;
 
                 // Normalize the difference in position
-                float normalizedDifference = positionDifference / (collision.collider.bounds.size.x / 2);
+                //float normalizedDifference = positionDifference / (collision.collider.bounds.size.x / 2);
                 lastPaddleHit = paddleHit;
                 // Calculate new vector
-                float angle = normalizedDifference * 45.0f; // Adjust the angle as needed
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+                //float angle = normalizedDifference * 45.0f; // Adjust the angle as needed
+                //Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                //Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
                 // Apply the new direction with the same speed
-                rb.velocity = direction * rb.velocity.magnitude;
+                //rb.velocity = direction * rb.velocity.magnitude;
             }
             else
             {
                 // Add a little randomness to the bounce off other surfaces
-                Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
-                rb.velocity += tweak;
+               // Vector2 tweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
+                //rb.velocity += tweak;
             }
 
             // Optionally, speed up the ball
