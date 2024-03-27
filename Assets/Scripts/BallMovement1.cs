@@ -12,6 +12,7 @@ public class BallMovement1 : MonoBehaviour
     public CollosionEffects Particles;
     public GameObject ParticleSystem;
     public bool hitP1Last;
+    public AudioSource sfx;
     
     public PalletMovement lastPaddleHit;
 
@@ -52,6 +53,7 @@ public class BallMovement1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+            sfx.Play();
             PalletMovement paddleHit = collision.gameObject.GetComponent<PalletMovement>();
             if (paddleHit != null)
             {
